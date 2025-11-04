@@ -128,7 +128,25 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .left-controls {
+            display: flex;
+            align-items: center;
+        }
+        .terminal-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background-color: #ff5f57; }
+        .yellow { background-color: #ffbc2f; }
+        .green { background-color: #28c840; }
         .code-title {
+            flex-grow: 1;
+            text-align: center;
             font-size: 1.25rem;
             font-weight: 600;
             color: #f8f8f2;
@@ -169,19 +187,6 @@
         .copy-btn.copied .copy-tooltip {
             opacity: 1;
         }
-        .typing-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1.2em;
-            background-color: #f8f8f2;
-            margin-left: 2px;
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen transition-colors duration-300">
@@ -199,7 +204,6 @@
             </button>
         </div>
     </nav>
-
     <!-- Main Content -->
     <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-4xl mx-auto text-center">
@@ -212,12 +216,18 @@
                     We're building the ultimate developer resource hub with code snippets, cheatsheets, and documentation for all major programming languages.
                 </p>
             </div>
-
             <!-- Code Snippet Preview -->
             <div class="mb-12 max-w-3xl mx-auto">
                 <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">A Taste of What's Coming</h2>
                 <div class="code-snippet rounded-xl text-left">
                     <div class="code-header">
+                        <div class="left-controls">
+                            <div class="terminal-controls">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                        </div>
                         <div class="code-title" id="code-snippet-title">JavaScript Example</div>
                         <div class="code-controls">
                             <button class="code-btn" id="prev-code" title="Previous example">
@@ -241,14 +251,12 @@
     console.<span class="code-function">error</span>(<span class="code-string">'Error:'</span>, error);
   }
 }
-
 <span class="code-comment">// Usage example</span>
 <span class="code-function">fetchData</span>(<span class="code-string">'https://api.example.com/data'</span>)
   .<span class="code-function">then</span>(data => console.<span class="code-function">log</span>(data));</code></pre>
                 </div>
             </div>
             <iframe src="https://codewithrudra12.github.io/itsboyrudra.io/" width="800" height="600" frameborder="0"></iframe>
-
             <!-- Supported Languages -->
             <div class="mb-12">
                 <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Languages We'll Cover</h2>
@@ -271,7 +279,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Notify Form -->
             <div class="coming-soon-card rounded-xl p-8 mb-12 max-w-2xl mx-auto">
                 <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center justify-center">
@@ -282,12 +289,12 @@
                     </span>
                 </h2>
                 <p class="text-gray-600 dark:text-gray-300 mb-6">
-                    Enter your email below to be the first to know when we're live. 
+                    Enter your email below to be the first to know when we're live.
                     <span class="block mt-2 text-sm text-green-600 dark:text-green-400">
                         <i class="fas fa-shield-alt mr-1"></i> Your email stays private - we'll never share it with third parties
                     </span>
                 </p>
-                <form id="notify-form" class="flex flex-col sm:flex-row gap-4 justify-center items-start"  action="https://formspree.io/f/mqadeoky"
+                <form id="notify-form" class="flex flex-col sm:flex-row gap-4 justify-center items-start" action="https://formspree.io/f/mqadeoky"
   method="POST">
                     <div class="flex-grow max-w-md">
                         <input type="email" id="email-input" placeholder="Your email address" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -299,7 +306,7 @@
                         <i class="fas fa-bell mr-2"></i> Notify Me
                     </button>
                 </form>
-                
+               
                 <!-- Thank You Message (Initially Hidden) -->
                 <div id="thank-you-message" class="thank-you-message mt-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
                     <div class="flex items-center">
@@ -315,14 +322,13 @@
                         </div>
                     </div>
                 </div>
-                
+               
                 <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <p class="text-xs text-gray-500 dark:text-gray-400">
                         <i class="fas fa-info-circle mr-1"></i> We respect your privacy. You'll only receive a single notification when we launch, with an option to unsubscribe.
                     </p>
                 </div>
             </div>
-
             <!-- Privacy Commitment -->
             <div class="coming-soon-card rounded-xl p-6 mb-12 max-w-2xl mx-auto text-left">
                 <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
@@ -347,7 +353,6 @@
                     </li>
                 </ul>
             </div>
-
             <!-- Social Links -->
             <div class="mb-12">
                 <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Follow Our Progress</h2>
@@ -368,12 +373,10 @@
             </div>
         </div>
     </main>
-
     <!-- Footer -->
     <footer class="bg-gray-800 dark:bg-gray-900 py-8 px-4 sm:px-6 lg:px-8 text-center">
         <p class="text-gray-400 text-sm">© 2025 CODESPACEHUB. All rights reserved. <a href="#" class="underline hover:text-gray-300" onclick="showPrivacyPolicy()">Privacy Policy</a></p>
     </footer>
-
     <!-- Privacy Policy Modal -->
     <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 m-4 max-w-2xl max-h-[80vh] overflow-y-auto">
@@ -385,33 +388,31 @@
             </div>
             <div class="text-gray-600 dark:text-gray-300 text-sm space-y-4">
                 <p>At CODESPACEHUB, we take your privacy seriously. This policy outlines how we handle your information:</p>
-                
+               
                 <h4 class="font-semibold text-gray-800 dark:text-white mt-4">Information We Collect</h4>
                 <p>We only collect your email address for the purpose of notifying you when our platform launches.</p>
-                
+               
                 <h4 class="font-semibold text-gray-800 dark:text-white mt-4">How We Use Your Information</h4>
                 <p>Your email address will be used solely to send you a one-time notification when CODESPACEHUB becomes available. We will not use your email for any other purposes.</p>
-                
+               
                 <h4 class="font-semibold text-gray-800 dark:text-white mt-4">Data Storage and Security</h4>
                 <p>We implement appropriate security measures to protect your information. Your email is stored encrypted and accessed only for the purpose of sending the launch notification.</p>
-                
+               
                 <h4 class="font-semibold text-gray-800 dark:text-white mt-4">No Sharing with Third Parties</h4>
                 <p>We do not and will not share your email address with any third parties. Your information remains confidential.</p>
-                
+               
                 <h4 class="font-semibold text-gray-800 dark:text-white mt-4">Your Rights</h4>
                 <p>You can request deletion of your information at any time by contacting us at privacy@codespacehub.com.</p>
-                
+               
                 <p class="mt-6">By providing your email address, you agree to these terms.</p>
             </div>
         </div>
     </div>
-
     <script>
         // Theme Toggle
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const htmlElement = document.documentElement;
-
         themeToggle.addEventListener('click', () => {
             htmlElement.classList.toggle('dark');
             const isDark = htmlElement.classList.contains('dark');
@@ -420,49 +421,43 @@
                 : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>`;
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
-
         if (localStorage.getItem('theme') === 'dark') {
             htmlElement.classList.add('dark');
             themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>`;
         }
-
         // Form submission
         document.getElementById('notify-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const emailInput = document.getElementById('email-input');
             const email = emailInput.value;
-            
+           
             if (email) {
                 // Show the private thank you message
                 document.getElementById('user-email').textContent = email;
                 document.getElementById('thank-you-message').classList.add('show');
-                
+               
                 // Clear the form
                 emailInput.value = '';
-                
+               
                 // Hide the thank you message after 10 seconds
                 setTimeout(() => {
                     document.getElementById('thank-you-message').classList.remove('show');
                 }, 10000);
             }
         });
-
         // Modal functions
         function showPrivacyPolicy() {
             document.getElementById('privacy-modal').classList.remove('hidden');
         }
-
         function closeModal() {
             document.getElementById('privacy-modal').classList.add('hidden');
         }
-
         // Close modal when clicking outside
         document.getElementById('privacy-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
-
         // Code snippet examples
         const codeExamples = [
             {
@@ -476,7 +471,6 @@
     console.<span class="code-function">error</span>(<span class="code-string">'Error:'</span>, error);
   }
 }
-
 <span class="code-comment">// Usage example</span>
 <span class="code-function">fetchData</span>(<span class="code-string">'https://api.example.com/data'</span>)
   .<span class="code-function">then</span>(data => console.<span class="code-function">log</span>(data));`
@@ -506,7 +500,6 @@
   <span class="code-attribute">margin</span>: <span class="code-number">0</span> auto;
   <span class="code-attribute">padding</span>: <span class="code-number">2</span>rem;
 }
-
 <span class="code-tag">.card</span> {
   <span class="code-attribute">background</span>: white;
   <span class="code-attribute">border-radius</span>: <span class="code-number">8</span>px;
@@ -514,7 +507,6 @@
   <span class="code-attribute">padding</span>: <span class="code-number">1.5</span>rem;
   <span class="code-attribute">transition</span>: transform 0.2s ease;
 }
-
 <span class="code-tag">.card:hover</span> {
   <span class="code-attribute">transform</span>: translateY(-5px);
 }`
@@ -529,7 +521,6 @@
         sequence.append(a)
         a, b = b, a + b
     <span class="code-keyword">return</span> sequence
-
 <span class="code-comment"># Get first 10 Fibonacci numbers</span>
 fib_sequence = fibonacci(<span class="code-number">10</span>)
 print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
@@ -539,16 +530,16 @@ print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
                 code: `<span class="code-keyword">public class</span> <span class="code-type">Main</span> {
     <span class="code-keyword">public static void</span> <span class="code-function">main</span>(String[] args) {
         System.out.println(<span class="code-string">"Hello, World!"</span>);
-        
+       
         <span class="code-comment">// Create an array of integers</span>
         <span class="code-keyword">int</span>[] numbers = {<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>, <span class="code-number">5</span>};
-        
+       
         <span class="code-comment">// Calculate sum</span>
         <span class="code-keyword">int</span> sum = <span class="code-number">0</span>;
         <span class="code-keyword">for</span> (<span class="code-keyword">int</span> num : numbers) {
             sum += num;
         }
-        
+       
         System.out.println(<span class="code-string">"Sum: "</span> + sum);
     }
 }`
@@ -556,19 +547,17 @@ print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
             {
                 title: "Go Example",
                 code: `<span class="code-keyword">package</span> main
-
 <span class="code-keyword">import</span> (
     <span class="code-string">"fmt"</span>
     <span class="code-string">"time"</span>
 )
-
 <span class="code-keyword">func</span> <span class="code-function">main</span>() {
     <span class="code-comment">// Print current time</span>
     fmt.Println(<span class="code-string">"Current time:"</span>, time.Now().Format(time.RFC1123))
-    
+   
     <span class="code-comment">// Create a slice of strings</span>
     fruits := []string{<span class="code-string">"apple"</span>, <span class="code-string">"banana"</span>, <span class="code-string">"cherry"</span>}
-    
+   
     <span class="code-comment">// Iterate over the slice</span>
     <span class="code-keyword">for</span> index, fruit := <span class="code-keyword">range</span> fruits {
         fmt.Printf(<span class="code-string">"Index: %d, Fruit: %s\n"</span>, index, fruit)
@@ -581,17 +570,16 @@ print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
     <span class="code-comment">// Immutable variable</span>
     <span class="code-keyword">let</span> x = <span class="code-number">5</span>;
     println!(<span class="code-string">"The value of x is: {}"</span>, x);
-    
+   
     <span class="code-comment">// Mutable variable</span>
     <span class="code-keyword">let</span> <span class="code-keyword">mut</span> y = <span class="code-number">10</span>;
     y = y + <span class="code-number">1</span>;
     println!(<span class="code-string">"The value of y is: {}"</span>, y);
-    
+   
     <span class="code-comment">// Function call</span>
     <span class="code-keyword">let</span> result = <span class="code-function">add_numbers</span>(x, y);
     println!(<span class="code-string">"{} + {} = {}"</span>, x, y, result);
 }
-
 <span class="code-keyword">fn</span> <span class="code-function">add_numbers</span>(a: <span class="code-type">i32</span>, b: <span class="code-type">i32</span>) -> <span class="code-type">i32</span> {
     a + b
 }`
@@ -600,21 +588,19 @@ print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
                 title: "C++ Example",
                 code: `<span class="code-comment">#include &lt;iostream&gt;</span>
 <span class="code-comment">#include &lt;vector&gt;</span>
-
 <span class="code-keyword">using namespace</span> std;
-
 <span class="code-keyword">int</span> <span class="code-function">main</span>() {
     cout << <span class="code-string">"Hello, World!"</span> << endl;
-    
+   
     <span class="code-comment">// Create a vector of integers</span>
     vector<<span class="code-keyword">int</span>> numbers = {<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>, <span class="code-number">5</span>};
-    
+   
     <span class="code-comment">// Calculate sum</span>
     <span class="code-keyword">int</span> sum = <span class="code-number">0</span>;
     <span class="code-keyword">for</span> (<span class="code-keyword">int</span> num : numbers) {
         sum += num;
     }
-    
+   
     cout << <span class="code-string">"Sum: "</span> << sum << endl;
     <span class="code-keyword">return</span> <span class="code-number">0</span>;
 }`
@@ -623,20 +609,17 @@ print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
                 title: "Django Example",
                 code: `<span class="code-comment"># models.py</span>
 <span class="code-keyword">from</span> django.db <span class="code-keyword">import</span> models
-
 <span class="code-keyword">class</span> <span class="code-type">BlogPost</span>(models.Model):
     title = models.CharField(max_length=<span class="code-number">200</span>)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=<span class="code-keyword">True</span>)
     updated_at = models.DateTimeField(auto_now=<span class="code-keyword">True</span>)
-    
+   
     <span class="code-keyword">def</span> <span class="code-function">__str__</span>(self):
         <span class="code-keyword">return</span> self.title
-
 <span class="code-comment"># views.py</span>
 <span class="code-keyword">from</span> django.shortcuts <span class="code-keyword">import</span> render
 <span class="code-keyword">from</span> .models <span class="code-keyword">import</span> BlogPost
-
 <span class="code-keyword">def</span> <span class="code-function">post_list</span>(request):
     posts = BlogPost.objects.all().order_by(<span class="code-string">'-created_at'</span>)
     <span class="code-keyword">return</span> render(request, <span class="code-string">'blog/post_list.html'</span>, {<span class="code-string">'posts'</span>: posts})`
@@ -644,85 +627,54 @@ print(<span class="code-string">f"Fibonacci sequence: {fib_sequence}"</span>)`
             {
                 title: "Flask Example",
                 code: `<span class="code-keyword">from</span> flask <span class="code-keyword">import</span> Flask, render_template, request
-
 app = Flask(__name__)
-
 <span class="code-keyword">class</span> <span class="code-type">Task</span>:
     <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, id, title, completed=False):
         self.id = id
         self.title = title
         self.completed = completed
-
 tasks = [
     Task(<span class="code-number">1</span>, <span class="code-string">'Learn Flask'</span>),
     Task(<span class="code-number">2</span>, <span class="code-string">'Build an app'</span>)
 ]
-
 @app.route(<span class="code-string">'/'</span>)
 <span class="code-keyword">def</span> <span class="code-function">index</span>():
     <span class="code-keyword">return</span> render_template(<span class="code-string">'index.html'</span>, tasks=tasks)
-
 <span class="code-keyword">if</span> __name__ == <span class="code-string">'__main__'</span>:
     app.run(debug=<span class="code-keyword">True</span>)`
             }
         ];
-
         let currentCodeIndex = 0;
         const codeContent = document.getElementById('code-content');
         const codeTitle = document.getElementById('code-snippet-title');
         const prevButton = document.getElementById('prev-code');
         const nextButton = document.getElementById('next-code');
         const copyButton = document.getElementById('copy-code');
-        
-        // Function to type out code with animation
-        function typeCode(code, index = 0) {
-            if (index === 0) {
-                codeContent.innerHTML = '<span class="typing-cursor"></span>';
-            }
-            
-            if (index < code.length) {
-                // Remove the cursor
-                const cursor = codeContent.querySelector('.typing-cursor');
-                if (cursor) cursor.remove();
-                
-                // Add the next character
-                codeContent.innerHTML += code[index];
-                
-                // Add the cursor back
-                codeContent.innerHTML += '<span class="typing-cursor"></span>';
-                
-                // Scroll to bottom
-                codeContent.scrollTop = codeContent.scrollHeight;
-                
-                // Continue typing with a random delay to simulate natural typing
-                setTimeout(() => typeCode(code, index + 1), Math.random() * 40 + 10);
-            }
-        }
-        
+       
         // Function to show code example
         function showCodeExample(index) {
             currentCodeIndex = index;
             codeTitle.textContent = codeExamples[index].title;
-            typeCode(codeExamples[index].code);
-            
+            codeContent.innerHTML = codeExamples[index].code;
+           
             // Update button states
             prevButton.disabled = index === 0;
             nextButton.disabled = index === codeExamples.length - 1;
         }
-        
+       
         // Event listeners for navigation
         prevButton.addEventListener('click', () => {
             if (currentCodeIndex > 0) {
                 showCodeExample(currentCodeIndex - 1);
             }
         });
-        
+       
         nextButton.addEventListener('click', () => {
             if (currentCodeIndex < codeExamples.length - 1) {
                 showCodeExample(currentCodeIndex + 1);
             }
         });
-        
+       
         // Copy button functionality
         copyButton.addEventListener('click', () => {
             // Extract text content without HTML tags
@@ -731,7 +683,7 @@ tasks = [
                 .replace(/<span class="[^"]*">/g, '')
                 .replace(/<\/span>/g, '');
             const codeText = tempDiv.textContent;
-            
+           
             // Copy to clipboard
             navigator.clipboard.writeText(codeText).then(() => {
                 // Show "Copied!" tooltip
@@ -741,7 +693,7 @@ tasks = [
                 }, 2000);
             });
         });
-        
+       
         // Initialize with first code example
         showCodeExample(0);
     </script>
